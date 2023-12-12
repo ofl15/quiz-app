@@ -3,7 +3,7 @@ import "./app.css"
 import Trivia from "./components/Trivia";
 import Timer from "./components/Timer";
 import Start from "./components/Start";
-
+import { data } from "./data";
 
 function App() {
 
@@ -12,74 +12,7 @@ function App() {
   const [timeOut, setTimeOut] = useState(false);
   const [earned, setEarned] = useState("$ 0")
 
-  const data = [
-    {
-      id: 1,
-      question: "Rolex is a company that specializes in what type of product?",
-      answers: [
-        {
-          text: "Phone",
-          correct: false,
-        },
-        {
-          text: "Watches",
-          correct: true,
-        },
-        {
-          text: "Food",
-          correct: false,
-        },
-        {
-          text: "Cosmetic",
-          correct: false,
-        },
-      ],
-    },
-    {
-      id: 2,
-      question: "When did the website `Facebook` launch?",
-      answers: [
-        {
-          text: "2004",
-          correct: true,
-        },
-        {
-          text: "2005",
-          correct: false,
-        },
-        {
-          text: "2006",
-          correct: false,
-        },
-        {
-          text: "2007",
-          correct: false,
-        },
-      ],
-    },
-    {
-      id: 3,
-      question: "Who played the character of harry potter in movie?",
-      answers: [
-        {
-          text: "Johnny Deep",
-          correct: false,
-        },
-        {
-          text: "Leonardo Di Caprio",
-          correct: false,
-        },
-        {
-          text: "Denzel Washington",
-          correct: false,
-        },
-        {
-          text: "Daniel Red Cliff",
-          correct: true,
-        },
-      ],
-    },
-  ];
+  
 
   const moneyPyramid = useMemo(()=>
     [
@@ -97,7 +30,7 @@ function App() {
       {id:12 , amount:"$ 125000"},
       {id:13 , amount:"$ 250000"},
       {id:14 , amount:"$ 500000"},
-      {id:15 , amount:"$ 1000000"},
+      {id:15 , amount:"$ 1000000"}
     ].reverse(),
     []) 
 
@@ -111,7 +44,7 @@ function App() {
       {username ? (
         <>
         <div className="main">
-        {timeOut ? <h1 className="endText">You earned: {earned}</h1> : (
+        {timeOut || moneyPyramid.id>15  ? <h1 className="endText">You earned: {earned}</h1> : (
     <>    <div className="top">
           <div className="timer"><Timer setTimeOut={setTimeOut} questionNumber={questionNumber}/></div>
         </div>

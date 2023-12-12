@@ -20,7 +20,7 @@ const Trivia = ({data ,setTimeOut,questionNumber,setQuestionNumber}) => {
     const handleClick = (a) =>{
         setSelectedAnswer(a);
         setClassName("answer active")
-        delay(3000, ()=> 
+        delay(30, ()=> 
             setClassName(a.correct ? "answer correct" : "answer wrong")
         )
             delay(6000, ()=> 
@@ -28,7 +28,7 @@ const Trivia = ({data ,setTimeOut,questionNumber,setQuestionNumber}) => {
                 if (a.correct) {
                     setQuestionNumber((prev)=>prev+1);
                     setSelectedAnswer(null)
-                } else{
+                }else{
                     setTimeOut(true)
                 }
             }
